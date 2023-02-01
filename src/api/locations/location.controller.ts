@@ -18,6 +18,7 @@ async function locationExists(req: Request, res: Response, next: NextFunction){
 async function readLocation(req: Request, res: Response){
     let location = res.locals.location as LocationData;
     location = await init(location, service.createLocation, service.updateBlob);
+    await service.updateLocation(location);
     const children = await service.readLocationChildren(location.location_id ?? '');
     res.send({...location, children});
 }

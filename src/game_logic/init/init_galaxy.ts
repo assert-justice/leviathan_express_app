@@ -60,8 +60,14 @@ const init: InitLocationFn = async (data, createLocation, updateBlob) => {
         const {name} = map.get(key);
         const location = initLocationData(name, 'cluster', data.instance_id);
         location.parent_id = data.location_id ?? '';
-        location.position = JSON.stringify(HexGrid.getRandomPoint(coord, 100));
-        location.position = JSON.stringify(HexGrid.toCartesian(coord, 100));
+        const hp = HexGrid.toCartesian(coord, 100);
+        const pos = {
+            x: hp[0],
+            y: hp[1],
+            z: hp[2],
+        }
+        // location.position = JSON.stringify(HexGrid.getRandomPoint(coord, 100));
+        location.position = JSON.stringify(pos);
         return location;
     });
 

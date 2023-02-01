@@ -3,6 +3,5 @@ import controller from './instance.controller';
 const router = express.Router();
 export default router;
 
-// router.get('/:instanceId', controller.read);
 router.get('/', controller.list);
-router.put('/', controller.create);
+router.post('/', controller.create);

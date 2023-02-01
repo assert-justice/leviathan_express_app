@@ -3,7 +3,7 @@ import init_galaxy from './init/init_galaxy';
 
 const init: InitLocationFn = async (data, createLocation, updateBlob) => {
     if(data.initialized) return data;
-    // data.initialized = true;
+    data.initialized = true;
     const initializers = new Map([
         ['galaxy', init_galaxy],
     ]);

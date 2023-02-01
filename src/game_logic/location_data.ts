@@ -22,7 +22,7 @@ export function initLocationData(name: string, type: string, instance_id?: strin
         parent_id: null, 
         type,
         properties: '{}',
-        position: '[0,0,0]',
+        position: '{"x": 0, "y":0, "z": 0}',
         blob_id: '',
         initialized: false,
     }

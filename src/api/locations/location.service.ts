@@ -18,6 +18,12 @@ async function updateBlob(blob_id: string, blob_data: string){
     await db('blobs').where({blob_id}).update({blob_data});
 }
 
+async function updateLocation(location: LocationData){
+    const {location_id} = location;
+    
+    await db('locations').where({location_id}).update(location);
+}
+
 async function createLocation(data: LocationData | LocationData[]): Promise<LocationData>{
     if(!Array.isArray(data)){
         data = [data];
@@ -35,6 +41,7 @@ async function createLocation(data: LocationData | LocationData[]): Promise<Loca
 
 export default {
     readLocation,
+    updateLocation,
     createLocation,
     updateBlob,
     readLocationChildren
