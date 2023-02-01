@@ -1,6 +1,6 @@
 export interface LocationData{
     name: string,
-    instance_id: string,
+    instance_id?: string,
     location_id?: string,
     parent_id: string | null, 
     type: string,
@@ -12,4 +12,18 @@ export interface LocationData{
 
 export function validateLocationData(data: any): LocationData | null{
     return null;
+}
+
+export function initLocationData(name: string, type: string, instance_id?: string): LocationData{
+    return {
+        name,
+        instance_id,
+        // location_id?: string,
+        parent_id: null, 
+        type,
+        properties: '{}',
+        position: '[0,0,0]',
+        blob_id: '',
+        initialized: false,
+    }
 }

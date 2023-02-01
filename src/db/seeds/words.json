@@ -1,6 +1,0 @@
-{
-    "bob": ["name", "male"],
-    "sally": ["name", "female"],
-    "ted": ["name", "male"],
-    "cat": ["animal", "pet", "mammal", "cute"]
-}

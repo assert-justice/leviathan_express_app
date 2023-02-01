@@ -8,7 +8,7 @@
   "scripts": {
     "start": "ts-node ./src/server.ts",
     "start:dev": "nodemon ./src/server.ts",
-    "reset_db": "knex migrate:rollback --all && knex migrate:latest && knex seed:run"
+    "reset_db": "knex migrate:rollback --all && knex migrate:latest"
   },
   "dependencies": {
     "@types/express": "^4.17.16",

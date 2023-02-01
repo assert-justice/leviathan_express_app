@@ -8,7 +8,7 @@ interface ClusterBlob{
     //
 }
 
-const init: InitLocationFn = (data, createLocation, updateBlob) => {
+const init: InitLocationFn = async (data, createLocation, updateBlob) => {
     return data;
 }
 

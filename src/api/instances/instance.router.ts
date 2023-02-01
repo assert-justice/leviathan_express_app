@@ -4,4 +4,5 @@ const router = express.Router();
 export default router;
 
 // router.get('/:instanceId', controller.read);
-router.get('/', controller.create);
+router.get('/', controller.list);
+router.put('/', controller.create);

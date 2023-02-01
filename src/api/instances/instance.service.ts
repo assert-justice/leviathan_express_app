@@ -8,6 +8,12 @@ async function readInstance(instance_id: string){
     return instance;
 }
 
+async function listInstances(){
+    const instance = await db('instances')
+    .select('*');
+    return instance;
+}
+
 async function createInstance(){
     const instance = await db('instances').insert({}, '*');
     return instance[0];
@@ -24,4 +30,5 @@ export default {
     readInstance,
     createInstance,
     updateInstance,
+    listInstances,
 };

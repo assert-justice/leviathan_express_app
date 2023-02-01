@@ -18,16 +18,18 @@ export class HexGrid<T>{
         return [x, y, z];
     }
     private static normalizeCoord(coord: Vec3): Vec3{
-        return coord;
+        const [q, r] = coord;
+        return [q, r, -q-r];
     }
-    get(coord: Vec3): T{
-        const key = HexGrid.getKey(coord);
+    get(coord: Vec3 | string): T{
+        const key = typeof coord === 'string' ? coord : HexGrid.getKey(coord);
         const val = this.data.get(key);
         if(!val) throw `'${key}' is not a valid key!`;
         return val;
     }
-    set(coord: Vec3, val: T){
-        this.data.set(HexGrid.getKey(coord), val);
+    set(coord: Vec3 | string, val: T){
+        const key = typeof coord === 'string' ? coord : HexGrid.getKey(coord);
+        this.data.set(key, val);
     }
     nodeExists(coord: Vec3){
         const key = HexGrid.getKey(coord);
