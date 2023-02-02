@@ -12,15 +12,17 @@ async function locationExists(req: Request, res: Response, next: NextFunction){
         next();
     }
     else next({status: 400, message: `No location with id ${locationId} exists!`});
-    // if(service.locationExists(locationId)) next();
 }
 
 async function readLocation(req: Request, res: Response){
     let location = res.locals.location as LocationData;
-    location = await init(location, service.createLocation, service.updateBlob);
-    await service.updateLocation(location);
+    if(!location.initialized){
+        location = await init(location, service.createLocation, service.updateBlob);
+        await service.updateLocation(location);
+    }
     const children = await service.readLocationChildren(location.location_id ?? '');
-    res.send({...location, children});
+    const blob = await service.readBlob(location.blob_id);
+    res.send({...location, children, blob});
 }
 
 export default {

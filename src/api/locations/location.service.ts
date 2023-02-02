@@ -9,10 +9,9 @@ async function readLocationChildren(location_id: string): Promise<LocationData[]
     return db('locations').select('*').where({parent_id: location_id});
 }
 
-// async function createBlob(blob_data: string){
-//     const blob = await db('blobs').insert({blob_data}, '*');
-//     return blob[0];
-// }
+async function readBlob(blob_id: string){
+    return db('blobs').where({blob_id}).select('*');
+}
 
 async function updateBlob(blob_id: string, blob_data: string){
     await db('blobs').where({blob_id}).update({blob_data});
@@ -20,7 +19,6 @@ async function updateBlob(blob_id: string, blob_data: string){
 
 async function updateLocation(location: LocationData){
     const {location_id} = location;
-    
     await db('locations').where({location_id}).update(location);
 }
 
@@ -43,6 +41,7 @@ export default {
     readLocation,
     updateLocation,
     createLocation,
+    readBlob,
     updateBlob,
     readLocationChildren
 };
